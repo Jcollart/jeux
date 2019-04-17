@@ -2,12 +2,13 @@ var precedente = -1;
 var attente = 0;
 var img;
 var imgp;
-
+//       invisibilité images          //
 function cachephotos () {
 img.style.visibility = 'hidden';
 imgp.style.visibility = 'hidden';
 attente = 0;
 }
+//        compatibilité image          //
 function clic (n) {
 if (attente != 1) {
 img = document.getElementById('img'+n);
@@ -25,7 +26,7 @@ setTimeout('cachephotos();',800);
 precedente = -1;
 }
 }
-
+//             Initialisation jeu           //
 function initgame () {
 for (var i=1 ; i<=200 ; i++) {
 var n1 = Math.ceil(16*Math.random());
