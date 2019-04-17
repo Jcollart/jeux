@@ -1,0 +1,43 @@
+body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+/************* delimitation jeu*****************/
+div.jeu { 
+  height: 520px;
+  width: 520px;
+  margin: 2em auto 2em auto;
+  float:center;
+  }
+
+ /***************gestion case image****************/ 
+div.case {
+  height: 100px;
+  width: 100px;
+  border: 1px solid black;
+  float: left;
+  margin: 10px;
+  background-color: rgb(146, 128, 25);
+  }
+
+ /*****************gestion image****************/ 
+img {
+  height: 100px;
+  width: 100px;
+  visibility: hidden;
+  }
+hr {
+  clear: both;
+  visibility: hidden;
+  }
+/*******************titre********************/
+
+  h1{
+  color: black;
+  font-weight: bold;
+  text-decoration: underline;
+  width:430px;
+  margin:auto;
+  font-size: 20px;
+}
