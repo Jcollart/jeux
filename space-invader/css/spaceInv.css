@@ -1,0 +1,39 @@
+
+#ship {
+	position: absolute ;
+	background: rgb(219, 2, 2) ;
+	width: 10px;
+	height: 10px;
+	
+}
+
+#univers {
+	position: absolute ;
+	width:1000px;
+	height:800px;
+	 
+	
+	
+}
+
+.mis {
+	position: absolute ;
+	background: black ;
+	width: 8px;
+	height: 24px;
+}
+
+.vas {
+	position: absolute ;
+	background: rgb(16, 129, 6) ;
+	width: 50px ;
+	height: 0px ;
+}
+
+#armee {
+	position:absolute;
+	left:600px;
+	top:150px;
+	height:10px;
+	width:10px
+} 
