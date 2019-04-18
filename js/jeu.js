@@ -15,8 +15,7 @@ img = document.getElementById('img'+n);
 img.style.visibility = 'visible';
 if (precedente<0) {
 precedente = n;
-}
-else {
+}else {
 imgp = document.getElementById('img'+precedente);
 if (imgp.src==img.src) {
 } else {
@@ -24,6 +23,7 @@ attente = 1;
 setTimeout('cachephotos();',800);
 }
 precedente = -1;
+}
 }
 }
 //             Initialisation jeu           //

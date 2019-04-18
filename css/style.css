@@ -1,5 +1,6 @@
 body {
-   background-color:black;
+   background-image:url("../images/fondecran.jpg");
+   background-size: 100%;
    min-height: 100%;
    margin: 0;
    padding: 0;
@@ -21,7 +22,8 @@ div.case {
    border: 1px solid black;
    float: left;
    margin: 10px;
-   background-color: white;
+   background-image:url("../images/doscarte.jpg");
+   background-size: 100%;
    border-color:2px whitesmoke;
 }
 
@@ -39,7 +41,7 @@ hr {
 
 /*******************titre********************/
 h1{
-   color: red;
+   color: whitesmoke;
    font-weight:bolder;
    text-decoration: underline;
    width:430px;
