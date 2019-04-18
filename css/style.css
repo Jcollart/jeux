@@ -1,43 +1,48 @@
 body {
-    min-height: 100%;
-    margin: 0;
-    padding: 0;
+   background-color:black;
+   min-height: 100%;
+   margin: 0;
+   padding: 0;
 }
+
 /************* delimitation jeu*****************/
 div.jeu { 
-  height: 520px;
-  width: 520px;
-  margin: 2em auto 2em auto;
-  float:center;
-  }
+   height: 520px;
+   width: 520px;
+   margin: 2em auto 2em auto;
+   float:center;
+   border:2px whitesmoke;
+}
 
  /***************gestion case image****************/ 
 div.case {
-  height: 100px;
-  width: 100px;
-  border: 1px solid black;
-  float: left;
-  margin: 10px;
-  background-color: rgb(146, 128, 25);
-  }
+   height: 100px;
+   width: 100px;
+   border: 1px solid black;
+   float: left;
+   margin: 10px;
+   background-color: white;
+   border-color:2px whitesmoke;
+}
 
  /*****************gestion image****************/ 
 img {
-  height: 100px;
-  width: 100px;
-  visibility: hidden;
-  }
+   height: 100px;
+   width: 100px;
+   visibility: hidden;
+}
+  
 hr {
-  clear: both;
-  visibility: hidden;
-  }
-/*******************titre********************/
+   clear: both;
+   visibility: hidden;
+}
 
-  h1{
-  color: black;
-  font-weight: bold;
-  text-decoration: underline;
-  width:430px;
-  margin:auto;
-  font-size: 20px;
+/*******************titre********************/
+h1{
+   color: red;
+   font-weight:bolder;
+   text-decoration: underline;
+   width:430px;
+   margin:auto;
+   font-size: 20px;
 }
