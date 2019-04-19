@@ -25,6 +25,7 @@ div.case {
    background-image:url("../images/doscarte.jpg");
    background-size: 100%;
    border-color:2px whitesmoke;
+   border-radius: 20%;
 }
 
  /*****************gestion image****************/ 

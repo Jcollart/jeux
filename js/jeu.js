@@ -17,12 +17,12 @@ function clic (n) {
    if (attente != 1) {
        img = document.getElementById('img'+n);
        img.style.visibility = 'visible';
-    if (precedente<0) {
-       precedente = n;
+         if (precedente<0) {
+            precedente = n;
 } 
     else {
        imgp = document.getElementById('img'+precedente);
-    if (imgp.src==img.src) {
+         if (imgp.src==img.src) {
 }
     else {
        attente = 1;
