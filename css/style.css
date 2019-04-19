@@ -1,5 +1,5 @@
 body {
-   background-image:url("../images/fondecran.jpg");
+   background-image:url("../images/matrix.jpg");
    background-size: 100%;
    min-height: 100%;
    margin: 0;
@@ -22,9 +22,9 @@ div.case {
    border: 1px solid black;
    float: left;
    margin: 10px;
-   background-image:url("../images/doscarte.jpg");
+   background-image:url("../images/simplonco.jpg");
    background-size: 100%;
-   border-color:2px whitesmoke;
+   border-color:10px black;
    border-radius: 20%;
 }
 
