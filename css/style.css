@@ -33,10 +33,11 @@ img {
    width: 100px;
    visibility: hidden;
 }
-  
+
+/*****************séparation ligne*****************/
 hr {
    clear: both;
-   visibility: hidden;
+   visibility:hidden;
 }
 
 /*******************titre********************/

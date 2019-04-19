@@ -1,19 +1,15 @@
 
 #ship {
 	position: absolute ;
-	background: rgb(219, 2, 2) ;
+	background: red ;
 	width: 10px;
 	height: 10px;
-	
 }
 
 #univers {
 	position: absolute ;
 	width:1000px;
 	height:800px;
-	 
-	
-	
 }
 
 .mis {
@@ -26,14 +22,14 @@
 .vas {
 	position: absolute ;
 	background: rgb(16, 129, 6) ;
-	width: 50px ;
+	width: 30px ;
 	height: 0px ;
 }
 
 #armee {
 	position:absolute;
 	left:600px;
-	top:150px;
+	top:200px;
 	height:10px;
 	width:10px
 } 

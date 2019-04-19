@@ -11,117 +11,92 @@ m = new Array()
 var tm = new Array()
 var lastFire = 0
 
-//Recupere la largeur et la hauteur de la page utile
-largeur=screen.availWidth
-hauteur=screen.availHeight
-vaisseau=(largeur/2)-110
+//       Récupére la largeur et la hauteur de la page utile         //
+    largeur=screen.availWidth
+    hauteur=screen.availHeight
+    vaisseau=(largeur/2)-110
 
+//     Redimention de la surface jouable en fonction de la résolution jouable    //
 
+function redim(){
+   document.bgColor="black"
+   document.getElementById('univers').style.left=(largeur/2)-400 +'px'
+   document.getElementById('univers').style.top=(hauteur/2)-300 +'px'
 
-function redim()
-{
-//Redim de la surface jouable en fonction de la résolution utile du joueur
-document.bgColor="black"
-document.getElementById('univers').style.left=(largeur/2)-400 +'px'
-document.getElementById('univers').style.top=(hauteur/2)-300 +'px'
+//        Position du vaisseau pour qu'il coincide avec le milieu du bas de la surface jouable    //
 
-//Position du vaisseau pour qu'il coincide avec le milieu du bas de la surface jouable
-document.getElementById('ship').style.top=(hauteur/2)+100 +'px'
-document.getElementById('ship').style.left=(largeur/2)-50 +'px'
+   document.getElementById('ship').style.top=(hauteur/2)+100 +'px'
+   document.getElementById('ship').style.left=(largeur/2)-50 +'px'
 }
 
-function Touche_presse(keyCode)
-{
-switch(keyCode)
-{
-case 37: bouge(0,-15); break; //fleche gauche pressée
-case 39: bouge(15,0); break; //fleche droite pressée
-case 32: tir();break; //touche espace
-default:break;
+function Touche_presse(keyCode){
+   switch(keyCode){
+        case 37: bouge(0,-15); break; //  fleche gauche pressée code ascii   //
+        case 39: bouge(15,0); break;  //  fleche droite pressée code ascii   //
+        case 32: tir();break;         //         touche espace               //
+        default:break;
 }
 }
 
+//        Déplacement du vaisseau sur l'axe des abscisses               //
+function bouge(x,y){
+    min=(largeur/2)-420
+    max=(largeur/2)-400+640
 
-function bouge(x,y) //Déplacement du vaisseau sur l'axe des abscisses
-{
-min=(largeur/2)-420
-max=(largeur/2)-400+620
+      if(vaisseau<max){
+         vaisseau+=x
 
-
-if(vaisseau<max)
-{
-vaisseau+=x
-
-document.getElementById('ship').style.left=vaisseau +'px'
-
+            document.getElementById('ship').style.left=vaisseau +'px'
 }
 
-if(vaisseau>min)
-{
-vaisseau+=y
+       if(vaisseau>min){
+          vaisseau+=y
 
-document.getElementById('ship').style.left=vaisseau +'px'
+            document.getElementById('ship').style.left=vaisseau +'px'
 
 }
 }
-function missile(x,y,ord) {
-	this.ord = ord
-	this.x=x
-	this.y=y
-	this.v=-120
-	this.t0 = new Date().getTime()/1000
-	this.miss = "<div id='mis_"+this.ord+"' class='mis'><img src=img/missile.bmp'/></div>"
-	document.getElementById("contenant").innerHTML+= this.miss
-	document.getElementById("mis_"+this.ord).style.top=y
-	document.getElementById("mis_"+this.ord).style.left=x
-	this.tire = function() {
-		if(this.y>-24){
-			now = new Date().getTime()/1000
-			var dt = now-this.t0	
-			var yaux = this.y
-			this.y = this.v*dt+this.y
-			document.getElementById("mis_"+this.ord).style.top=this.y
-			for( var i=4 ; i>=0 ; i--){
-				if (this.y<a.y0+60*i+30 && yaux>a.y0+60*i){
-					for( var j=0 ; j<6 ; j++){
-						if (this.x<(a.x0+75*j+58) && this.x+8>(a.x0+75*j)){
-							var id = "vas_"+(i*6+j)
-							if(document.getElementById(id)!=null){
-								document.getElementById("contenant").removeChild(document.getElementById("mis_"+this.ord))
-								document.getElementById("armee").removeChild(document.getElementById(id))
-								if (a.battle.length==1){
-									alert("Vous avez gagnés")
-								} else {
-									a.heigh=0	
-									for( var p = 0 ; p<a.battle.length ; p++){
-										if (a.battle[p].id == id){
-											a.battle.splice(p,1)
-										} else {
-											a.heigh=Math.max(a.battle[p].y+30, a.heigh)
-										}
-									}
-								}	
-								return true
-							}
-							
-						}
-					}
-				}
-			}
-			tm[this.ord]=setTimeout("m["+this.ord+"].tire()", 100) 
-		} else {
-			document.getElementById("contenant").removeChild(document.getElementById("mis_"+this.ord))
-		}
-	} 	
-}
 
+//                    gestion missile                 //
+
+var missiles = [];
+
+const TOUCHE_BAS = 'ArrowDown';
+const TOUCHE_HAUT = 'ArrowUp';
+const TOUCHE_GAUCHE = 'ArrowLeft'; /*Constantes que retourne la méthode key d'un évènement clavier */
+const TOUCHE_DROITE = 'ArrowRight';
+const TIRER = 'space';
+
+function Missile(posx, posy, image, scene, target = 0) { /* Constructeur de missiles */
+    this.posx = posx;
+    this.posy = posy;
+    this.scene = scene;
+    this.image = image;
+    this.target = target;
+    tir.play();
+
+    this.dessiner = function () {
+        if (!this.target) {
+            this.scene.drawImage(this.image, this.posx, this.posy, this.image.width, this.image.height)
+        }
+    }
+    this.effacer = function () {
+        this.scene.clearRect(this.posx, this.posy, this.image.width, this.image.height);
+    }
+
+if (touche == TIRER) {        
+                    missiles.push(new Missile(vaisseau.posx + 22, 490, imageMissile, plateauJeu));
+                    missiles[missiles.length - 1].dessiner();
+                }
+
+/*
 function vassel(x, y, id){
 	this.x = x 
 	this.y = y
 	this.id = id
-}
-function armee(){
-	this.nVas = 18
+}*/
+/*function armee(){
+	this.nVas = 24
 	this.vy = 20
 	this.Xorig = 185
 	this.x0 = 185
@@ -135,7 +110,7 @@ function armee(){
 	}
 	this.draw = function(){
 		for( i = 0 ; i<this.nVas ; i++){
-			document.getElementById("armee").innerHTML += "<div id='vas_"+i+"' class='vas' style='left:"+this.battle[i].x+"px; top: "+this.battle[i].y+"px'><img src='img/invader.bmp'/></div>"
+			document.getElementById("armee").innerHTML += "<div id='vas_"+i+"' class='vas' style='left:"+this.battle[i].x+"px; top: "+this.battle[i].y+"px'><img src='img/invader.png'/></div>"
 		}
 	}
 	this.run = function() {
@@ -152,8 +127,8 @@ function armee(){
  			setTimeout("a.run()", 100) 
 		}
 	}
-}
-function Ship(){
+}*/
+/*function Ship(){
 	this.x0=374
 	this.y0=550
 	this.accel=0
@@ -172,11 +147,11 @@ function Ship(){
 		this.t0=now
 		document.getElementById("ship").style.left = this.x0 
 	}
-}
+}*/
 
-sh = new Ship()
+/* sh = new Ship() */
 
-function keypress(e) {
+/*function keypress(e) {
 // 	alert("keypress")
 	if (window.event){
 		e = window.event
@@ -213,49 +188,33 @@ function keypress(e) {
 		} 
 	return true;
 	}
-}
+}*/
 
 function release(e) {
 // 	alert("release")
 	if (window.event){
 		e = window.event
-		if (e.keyCode==74||e.keyCode==76){
-			sh.accel=0
-		}
-	} else {
-		if (e.keyCode==39 || e.keyCode==37){
-			sh.accel=0
-		}
-		return true;
-	}
-	
+	if (e.keyCode==74||e.keyCode==76){
+		sh.accel=0
 }
-
-
-	</script>
+}
+    else {
+	if (e.keyCode==39 || e.keyCode==37){
+		sh.accel=0
+}
+	return true;
+}
+}
+</script>
 </head>
 <body onLoad="redim()" onKeyDown="Touche_presse(event.keyCode)">
-<!--<div id="content"><img src="img/univers.jpg"/>
-<div id="armee"></div>
-<div id="ship"><img src="img/vas.bmp"/></div>
-</div>-->
+	
+   <img id="univers" src="img/univers.jpg" style="position:absolute;left:350px;top:200px;width:750px;height:450px;"/>
+   <div id="armee"></div>
+   <img id="ship" src="img/invader.png" style="position:absolute;left:730px;top:625px;height:15px;width:20px;"/>
 
-
-<img  src="img/univers.jpg" style="position:absolute;left:350px;top:200px;width:750px;height:450px;"/>
-<div id="armee"></div>
-<img id="ship" src="img/vas.bmp" style="position:absolute;left:730px;top:625px;height:15px;width:20px;"/>
+ 
 
 </body>
-<script>
-function faire(){
-	now = new Date().getTime()/1000
-	sh.move(now)
-	t = setTimeout("faire()", 100) 
-}
-
-a = new armee() 
-a.draw()
-a.run()
-faire()
-</script>
+ 
 </html>
