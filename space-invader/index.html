@@ -42,18 +42,13 @@ function Touche_presse(keyCode){
 function bouge(x,y){
     min=(largeur/2)-420
     max=(largeur/2)-400+640
-
-      if(vaisseau<max){
-         vaisseau+=x
-
+       if(vaisseau<max){
+          vaisseau+=x
             document.getElementById('ship').style.left=vaisseau +'px'
 }
-
        if(vaisseau>min){
           vaisseau+=y
-
             document.getElementById('ship').style.left=vaisseau +'px'
-
 }
 }
 
